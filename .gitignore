@@ -17,3 +17,4 @@ test-results.json
 public/uploads
 cypress/screenshots/
 cypress/videos/
+*.log

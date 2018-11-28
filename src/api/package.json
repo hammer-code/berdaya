@@ -5,16 +5,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/index.js",
+    "build": "babel src -d dist",
+    "dev": "npm run build && nodemon dist/index.js",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "awilix": "^4.0.1",
+    "awilix-express": "^1.1.0",
+    "express": "^4.16.4",
+    "ramda": "^0.26.1",
+    "tcomb": "^3.2.29",
+    "winston": "2.4.2"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.7"
   }
 }

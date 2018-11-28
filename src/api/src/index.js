@@ -1,14 +1,12 @@
-const express = require('express');
+/**
+ * Main file. The app kickstart here
+ */
 
-const app = express();
+import container from './container';
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Hello',
-  });
-});
+const app = container.resolve('app');
 
-app.listen(3000, () => {
-  // eslint-disable-next-line no-console
-  console.log('Hello');
+app.start().catch(error => {
+  app.logger.error(error.stack);
+  process.exit();
 });
