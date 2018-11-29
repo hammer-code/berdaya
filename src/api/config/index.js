@@ -1,5 +1,11 @@
+const path = require('path');
+
+require('dotenv').load({
+  path: path.resolve(__dirname, '../.env'),
+});
+
 const config = {
-  port: 3000,
+  port: process.env.PORT || 3000,
   env: 'development',
   logging: {
     maxsize: 100 * 1024, // 100mb
