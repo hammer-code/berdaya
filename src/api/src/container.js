@@ -1,10 +1,10 @@
 import {createContainer, asValue, asFunction} from 'awilix';
 
 import app from './app';
-import server from './interfaces/http/server';
-import router from './interfaces/http/router';
 import config from '../config';
 import logger from './infra/logging/logger';
+import server from './interfaces/http/server';
+import router from './interfaces/http/router';
 
 const container = createContainer();
 

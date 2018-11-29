@@ -8,12 +8,15 @@
     "build": "babel src -d dist",
     "dev": "npm run build && nodemon dist/index.js",
     "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "awilix": "^4.0.1",
     "awilix-express": "^1.1.0",
     "dotenv": "^6.1.0",
@@ -26,10 +29,12 @@
     "winston": "2.4.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "regenerator-runtime": "^0.13.1",
+    "supertest": "^3.3.0"
   }
 }

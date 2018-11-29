@@ -37,6 +37,8 @@ export default function createSwaggerRouter() {
    *     responses:
    *       200:
    *         description: API Status
+   *         schema:
+   *           $ref: '#/definitions/event'
    */
   router.get('/', (req, res) => {
     res.status(httpStatus.OK).json({status: 'API working'});

@@ -11,21 +11,28 @@ export default function createUserRouter() {
    *       id:
    *         type: string
    *         format: uuid
-   *       firstName:
-   *         type: string
-   *       lastName:
-   *         type: string
-   *       middleName:
+   *       name:
    *         type: string
    *       email:
    *         type: string
-   *       roleId:
-   *         type: number
-   *       isDeleted:
-   *         type: number
-   *       createdBy:
+   *       isVerified:
+   *         type: boolean
+   */
+
+  /**
+   * @swagger
+   * definitions:
+   *   event:
+   *     properties:
+   *       id:
    *         type: string
    *         format: uuid
+   *       name:
+   *         type: string
+   *       venue:
+   *         type: string
+   *       date:
+   *         type: string
    */
 
   /**
