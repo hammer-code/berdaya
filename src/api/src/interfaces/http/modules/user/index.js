@@ -21,22 +21,6 @@ export default function createUserRouter() {
 
   /**
    * @swagger
-   * definitions:
-   *   event:
-   *     properties:
-   *       id:
-   *         type: string
-   *         format: uuid
-   *       name:
-   *         type: string
-   *       venue:
-   *         type: string
-   *       date:
-   *         type: string
-   */
-
-  /**
-   * @swagger
    * /users:
    *   get:
    *     tags:

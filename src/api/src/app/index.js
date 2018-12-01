@@ -4,8 +4,11 @@
  * redis
  * express server
  */
-export default function createApp({server}) {
+export default function createApp({server, database}) {
   return {
-    start: () => Promise.resolve().then(server.start),
+    start: () =>
+      Promise.resolve()
+        .then(database.connect)
+        .then(server.start),
   };
 }

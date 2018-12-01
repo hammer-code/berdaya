@@ -12,6 +12,9 @@ const config = {
     maxFiles: 2,
     colorize: false,
   },
+  db: {
+    uri: process.env.MONGODB_URI,
+  },
 };
 
 module.exports = config;
