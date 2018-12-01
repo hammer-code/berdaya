@@ -14,8 +14,8 @@ export default function createRouter({config, logger}) {
 
   const apiRouter = Router();
 
-  apiRouter.use('/user', createControllerRoutes('user'));
-  apiRouter.use('/event', createControllerRoutes('event'));
+  apiRouter.use('/users', createControllerRoutes('user'));
+  apiRouter.use('/events', createControllerRoutes('event'));
 
   router.use('/api', apiRouter);
   router.use('/docs', swagger());
