@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import httpStatus from 'http-status';
 import container from '../../../../container';
 import eventUseCases from '../../../../app/event';
 import createEventRepository from '../../../../infra/repositories/event';
@@ -9,6 +10,7 @@ export default function createEventRouter() {
   const {Event: EventModel} = models;
   const eventRepository = createEventRepository(EventModel);
   const getUseCase = eventUseCases.getEvents({eventRepository});
+  const postUseCase = eventUseCases.createEvent({eventRepository});
 
   /**
    * @swagger
@@ -21,7 +23,8 @@ export default function createEventRouter() {
    *       name:
    *         type: string
    *       date:
-   *         type: date-time
+   *         type: string
+   *         format: date-time
    *       venue:
    *         type: string
    *       coordinate:
@@ -51,6 +54,42 @@ export default function createEventRouter() {
     getUseCase.getAll().then(data => {
       response.json({data});
     });
+  });
+
+  /**
+   * @swagger
+   * /events:
+   *   post:
+   *     tags:
+   *       - Events
+   *     description: Create new event
+   *     security:
+   *       - JWT: []
+   *     responses:
+   *       200:
+   *         description: Created event
+   *         schema:
+   *           $ref: '#/definitions/event'
+   *       401:
+   *        $ref: '#/responses/Unauthorized'
+   */
+  router.post('/', (request, response, next) => {
+    const {body} = request;
+
+    postUseCase
+      .create(body)
+      .then(data => {
+        response.status(httpStatus.CREATED).json({event: data});
+      })
+      .catch(error => {
+        if (error.name === 'InputValidation') {
+          return response.status(httpStatus.UNPROCESSABLE_ENTITY).json({
+            errors: error.data,
+          });
+        }
+
+        return next(error);
+      });
   });
 
   return router;

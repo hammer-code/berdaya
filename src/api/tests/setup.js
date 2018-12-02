@@ -2,8 +2,12 @@
 import request from 'supertest';
 import container from '../src/container';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('babel-polyfill');
+
 const server = container.resolve('server');
 const database = container.resolve('database');
+
 const config = container.resolve('config');
 const logger = container.resolve('logger');
 

@@ -4,10 +4,8 @@ const {request, app, database} = setup();
 
 let dbConn = null;
 
-beforeAll(() => {
-  database.connect().then(conn => {
-    dbConn = conn;
-  });
+beforeAll(async () => {
+  dbConn = await database.connect();
 });
 
 afterAll(() => {
@@ -17,15 +15,6 @@ afterAll(() => {
 describe('GET /api/docs', () => {
   test('it should be healthy', done => {
     request.get('/docs').then(response => {
-      expect(response.status).toBe(200);
-      done();
-    });
-  });
-});
-
-describe('GET /api/events', () => {
-  test('it should able to get list of events', done => {
-    request.get('/api/events').then(response => {
       expect(response.status).toBe(200);
       done();
     });

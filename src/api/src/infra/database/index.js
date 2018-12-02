@@ -19,11 +19,17 @@ function database({config}) {
   }
 
   async function purgeCollection(connection) {
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < connection.collections.length; i++) {
-      const collection = connection.collections[i];
-
-      collection.collection.remove();
+    // eslint-disable-next-line no-restricted-syntax
+    for (const collectionName in connection.collections) {
+      if (
+        connection.collections.hasOwnProperty.call(
+          connection.collections,
+          collectionName,
+        )
+      ) {
+        const collection = connection.collections[collectionName];
+        collection.collection.remove();
+      }
     }
   }
 

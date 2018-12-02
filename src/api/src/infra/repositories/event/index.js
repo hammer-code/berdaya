@@ -10,7 +10,9 @@ export default function createEventRepository(model) {
   }
 
   function getAll() {
-    return model.find({}).then(docs => docs.map(toEntity));
+    return model
+      .find({})
+      .then(docs => docs.map(doc => toEntity(doc.toObject())));
   }
 
   return {
